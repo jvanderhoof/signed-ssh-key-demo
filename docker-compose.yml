@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+  ssh-client:
+    container_name: ssh-client
+    build:
+      context: .
+      dockerfile: Dockerfile.ssh-client
+    entrypoint: sleep infinity
+    links:
+      - ssh-server
+    volumes:
+      - ./ca-certs/ca.pub:/etc/ssh/ca.pub
+
+  ssh-server:
+    container_name: ssh-server
+    build:
+      context: .
+      dockerfile: Dockerfile.sshd
+    entrypoint: sleep infinity
+    volumes:
+      - ./ca-certs/ca.pub:/etc/ssh/ca.pub
+
+  # ca:
+  #   container_name: ca
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.ssh-client
+  #   entrypoint: sleep infinity
