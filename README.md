@@ -53,10 +53,16 @@ $ ./4_generate_zoned_signed_cert.sh
 
 You should now be able to connect to the server from the client.
 
+### Revoke Access
+Next we'll revoke the client's public key:
+```
+$ ./5_revoke_key
+```
+
 ### Shut it Down
 Remove all running containers:
 ```
-$ ./5_stop.sh
+$ ./6_stop.sh
 ```
 
 ## Additional Resources:
